@@ -24,12 +24,16 @@ export default function reducer(state = {}, action) {
     board: nextBoard
   };
 }
-// export default function reducer(state = {}, action) {
-//   // TODO
-//   switch (action.type) {
-//     case MOVE:
-//       return { board: newBoard, action };
-//     default:
-//       return state;
-//   }
-// }
+export default function reducer(state = {}, action) {
+  // TODO
+  const newState=Object.assign({},state);
+  switch (action.type) {
+    case MOVE:
+       newState.board=newState.board.setIn(action.position,action.player);
+    default:
+      return state;
+  }
+}
+
+
+
